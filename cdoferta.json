@@ -1,0 +1,50 @@
+[
+    {
+        "tituo": "Still got the blues",
+        "artista": "Gary Moore",
+        "pais": "UK",
+        "compañia_discográfica": "Virgin records",
+        "precio": 10.20,
+        "año_de_publicación": 1990
+    },
+    {
+        "tituo": "One night only",
+        "artista": "Bee Gees",
+        "pais": "UK",
+        "compañia_discográfica": "Polydor",
+        "precio": 10.90,
+        "año_de_publicación": 1998
+    },
+    {
+        "titulo": "when a man loves a woman",
+        "artista": "Percy Sledge",
+        "pais": "USA",
+        "compañia_discográfica": "Atlantic",
+        "precio": 8.70,
+        "año_de_publicación": 1987
+    },
+    {
+        "titulo": "Big Willie style",
+        "artista": "Will Smith",
+        "pais": "USA",
+        "compañia_discográfica": "Columbia",
+        "precio": 9.90,
+        "año_de_publicación": 1997
+    },
+    {
+        "titulo": "La canción de Juan perro",
+        "artista": "Radio Futura",
+        "pais": "España",
+        "compañia_discográfica": "Sony Music-Ariola",
+        "precio": 9.90,
+        "año_de_publicación": 1987
+    },
+    {
+        "titulo": "The dock of the bay",
+        "artista": "Otis Redding",
+        "pais": "USA",
+        "compañia_discográfica": "Atlantic",
+        "precio": 7.90,
+        "año_de_publicación": 1987
+    }
+]

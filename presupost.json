@@ -1,0 +1,56 @@
+[
+    {
+        "pressupost": "1",
+        "placa_base": {
+            "nom": "ASUS ROG Strix B650-A Gaming WiFi - Placa Base AMD Ryzen AM5",
+            "preu": "234 €"
+        },
+        "CPU": {
+            "nom": "AMD Ryzen 9 7950X3D",
+            "preu": "690 €"
+        },
+        "RAM": {
+            "nom": "Corsair Vengeance DDR5 64GB (2x32GB)",
+            "preu": "82.99 €"
+        },
+        "disc_dur": {
+            "nom": "Samsung 980 1 TB NVMe M.2 Internal Solid State Drive",
+            "preu": "69.99 €"
+        },
+        "GPU": {
+            "nom": "RX 7800 XT",
+            "preu": "504 €"
+        },
+        "targeta_so": {
+            "nom": "Creative Sound BlasterX AE-5 Plus",
+            "preu": "106.92 €"
+        }
+    },
+    {
+        "pressupost": "2",
+        "placa_base": {
+            "nom": "MSI PRO B550-VC WiFi",
+            "preu": "150 €"
+        },
+        "CPU": {
+            "nom": "AMD Ryzen 7 7700X",
+            "preu": "400 €"
+        },
+        "RAM": {
+            "nom": "Kingston Fury Beast DDR5 32GB",
+            "preu": "99 €"
+        },
+        "disc_dur": {
+            "nom": "WD Black SN770 500GB",
+            "preu": "50 €"
+        },
+        "GPU": {
+            "nom": "RTX 4060",
+            "preu": "350 €"
+        },
+        "targeta_so": {
+            "nom": "Integrada",
+            "preu": "0 €"
+        }
+    }
+]
