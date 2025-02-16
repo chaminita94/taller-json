@@ -1,0 +1,60 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Egames",
+    "type": "object",
+    "properties": {
+        "nom-equip": {
+            "type": "string"
+        },
+        "jugadors": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "num-jugador": {
+                        "type": "integer"
+                    },
+                    "DNI": {
+                        "type": "string",
+                        "pattern": "^[0-9]{8}[A-Z]$"
+                    },
+                    "nom": {
+                        "type": "string"
+                    },
+                    "cognom": {
+                        "type": "string"
+                    },
+                    "edat": {
+                        "type": "integer"
+                    },
+                    "ciutat": {
+                        "type": "string"
+                    },
+                    "adreça": {
+                        "type": "string"
+                    },
+                    "telèfon": {
+                        "type": "integer"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "pattern": "^\\S+@\\S+\\.\\S+$"
+                    },
+                    "pais": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "num-jugador",
+                    "DNI",
+                    "nom",
+                    "cognom",
+                    "ciutat",
+                    "email"
+                ]
+            },
+            "uniqueItems": true
+        }
+    }
+}
