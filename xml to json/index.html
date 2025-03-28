@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Variables meteorològiques</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 2em;
+      background: #e9f0f4;
+    }
+
+    h1 {
+      color: #1d3557;
+      margin-bottom: 1em;
+    }
+
+    .dia {
+      background: #ffffff;
+      padding: 1.5em;
+      margin-bottom: 2em;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #457b9d;
+      border-bottom: 1px solid #a8dadc;
+      padding-bottom: 0.5em;
+    }
+
+    .variable {
+      margin-bottom: 1em;
+      padding: 0.5em;
+      border-left: 4px solid #457b9d;
+      background-color: #f1faee;
+      border-radius: 6px;
+    }
+
+    .variable strong {
+      color: #1d3557;
+      display: inline-block;
+      min-width: 140px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Variables meteorològiques per dia</h1>
+  <div id="resultat"></div>
+
+  <script>
+    // Funció per convertir "20250329Z" a format humà
+    function formatData(dataString) {
+      const any = dataString.substring(0, 4);
+      const mes = dataString.substring(4, 6);
+      const dia = dataString.substring(6, 8);
+      const data = new Date(`${any}-${mes}-${dia}`);
+  
+      // Dies i mesos en català
+      const diesSetmana = ['Diumenge', 'Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte'];
+      const mesos = ['gener', 'febrer', 'març', 'abril', 'maig', 'juny', 'juliol', 'agost', 'setembre', 'octubre', 'novembre', 'desembre'];
+  
+      const nomDia = diesSetmana[data.getDay()];
+      const nomMes = mesos[data.getMonth()];
+  
+      return `${nomDia}, ${data.getDate()} de ${nomMes} de ${data.getFullYear()}`;
+    }
+  
+    fetch('proper_dies.json')
+      .then(res => res.json())
+      .then(dades => {
+        const contenidor = document.getElementById('resultat');
+  
+        dades.forEach(entrada => {
+          const div = document.createElement('div');
+          div.className = 'dia';
+  
+          const titol = document.createElement('h2');
+          titol.textContent = `📅 ${formatData(entrada.diaPredit)}`;
+          div.appendChild(titol);
+  
+          const variables = entrada.versio.variables;
+          for (const [clau, valor] of Object.entries(variables)) {
+            const bloc = document.createElement('div');
+            bloc.className = 'variable';
+            bloc.innerHTML = `<strong>${clau.charAt(0).toUpperCase() + clau.slice(1)}:</strong> ${valor}`;
+            div.appendChild(bloc);
+          }
+  
+          contenidor.appendChild(div);
+        });
+      })
+      .catch(error => {
+        console.error("Error carregant proper_dies.json:", error);
+      });
+  </script>  
+</body>
+</html>
