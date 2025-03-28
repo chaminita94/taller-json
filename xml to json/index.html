@@ -7,20 +7,34 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       padding: 2em;
-      background: #e9f0f4;
+      margin: 0;
+      background: linear-gradient(to bottom, #a8dadc, #f1faee);
+      background-attachment: fixed;
+      min-height: 100vh;
     }
 
     h1 {
       color: #1d3557;
       margin-bottom: 1em;
+      text-align: center;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
 
     .dia {
       background: #ffffff;
       padding: 1.5em;
-      margin-bottom: 2em;
+      margin: 2em auto;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 800px;
+      border: 2px solid transparent;
+    }
+
+    .dia:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-image: linear-gradient(45deg, #457b9d, #1d3557) 1;
     }
 
     h2 {
@@ -32,10 +46,15 @@
 
     .variable {
       margin-bottom: 1em;
-      padding: 0.5em;
+      padding: 0.75em;
       border-left: 4px solid #457b9d;
       background-color: #f1faee;
       border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .variable:hover {
+      background-color: #e0f7fa;
     }
 
     .variable strong {
@@ -46,40 +65,32 @@
   </style>
 </head>
 <body>
-  <h1>Variables meteorològiques per dia</h1>
+  <h1>🌤️ Variables meteorològiques per dia</h1>
   <div id="resultat"></div>
 
   <script>
-    // Funció per convertir "20250329Z" a format humà
     function formatData(dataString) {
       const any = dataString.substring(0, 4);
       const mes = dataString.substring(4, 6);
       const dia = dataString.substring(6, 8);
       const data = new Date(`${any}-${mes}-${dia}`);
-  
-      // Dies i mesos en català
       const diesSetmana = ['Diumenge', 'Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte'];
       const mesos = ['gener', 'febrer', 'març', 'abril', 'maig', 'juny', 'juliol', 'agost', 'setembre', 'octubre', 'novembre', 'desembre'];
-  
-      const nomDia = diesSetmana[data.getDay()];
-      const nomMes = mesos[data.getMonth()];
-  
-      return `${nomDia}, ${data.getDate()} de ${nomMes} de ${data.getFullYear()}`;
+      return `${diesSetmana[data.getDay()]}, ${data.getDate()} de ${mesos[data.getMonth()]} de ${data.getFullYear()}`;
     }
-  
+
     fetch('proper_dies.json')
       .then(res => res.json())
       .then(dades => {
         const contenidor = document.getElementById('resultat');
-  
         dades.forEach(entrada => {
           const div = document.createElement('div');
           div.className = 'dia';
-  
+
           const titol = document.createElement('h2');
           titol.textContent = `📅 ${formatData(entrada.diaPredit)}`;
           div.appendChild(titol);
-  
+
           const variables = entrada.versio.variables;
           for (const [clau, valor] of Object.entries(variables)) {
             const bloc = document.createElement('div');
@@ -87,7 +98,7 @@
             bloc.innerHTML = `<strong>${clau.charAt(0).toUpperCase() + clau.slice(1)}:</strong> ${valor}`;
             div.appendChild(bloc);
           }
-  
+
           contenidor.appendChild(div);
         });
       })
